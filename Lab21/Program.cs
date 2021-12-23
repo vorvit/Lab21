@@ -36,7 +36,6 @@ namespace Lab21
             Thread thread = new Thread(threadStart);
             thread.Start();
             garden2();
-            thread.Join();
 
             for (int i = 0; i < height; i++)
             {
@@ -65,16 +64,13 @@ namespace Lab21
         }
         private static void garden2()
         {
-            //lock (locker)
+            for (int i = width - 1; i >= 0; i--)
             {
-                for (int i = width - 1; i > 0; i--)
+                for (int j = height - 1; j >= 0; j--)
                 {
-                    for (int j = height - 1; j > 0; j--)
-                    {
-                        if (field[j, i] == 0)
-                            field[j, i] = 2;
-                        Thread.Sleep(1);
-                    }
+                    if (field[j, i] == 0)
+                        field[j, i] = 2;
+                    Thread.Sleep(1);
                 }
             }
         }
